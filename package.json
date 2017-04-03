@@ -1,0 +1,28 @@
+{
+  "name": "meadowlarktravel",
+  "version": "1.0.0",
+  "description": "traveling",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/av1984/TestNode.git"
+  },
+  "keywords": [
+    "test",
+    "node"
+  ],
+  "author": "A.V.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/av1984/TestNode/issues"
+  },
+  "homepage": "https://github.com/av1984/TestNode#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0"
+  }
+}
