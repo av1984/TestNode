@@ -1,3 +1,5 @@
+var fortune = require('./lib/fortune.js');
+
 var express = require('express');
 var app = express();
 var handlebars = require('express-handlebars').create({ defaultLayout: 'main' });
@@ -12,8 +14,9 @@ app.set('port', process.env.PORT || 3000);
 app.get('/', function(req, res) {
     res.render('home');
 });
+
 app.get('/about', function(req, res) {
-    res.render('about');
+    res.render('about', { fortune: fortune.getFortune() } );
 });
 
 
