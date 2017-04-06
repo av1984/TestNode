@@ -3,7 +3,18 @@ var fortune = require('./lib/fortune.js');
 
 var express = require('express');
 var app = express();
-var handlebars = require('express-handlebars').create({ defaultLayout: 'main' });
+
+var handlebars = require('express-handlebars').create({
+    defaultLayout:'main',
+    helpers: {
+        section: function(name, options){
+            if(!this._sections) this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        }
+    }
+});
+
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -39,6 +50,15 @@ app.get('/tours/request-group-rate', function(req, res){
 });
 
 
+app.use(function(req, res, next){
+    console.log(res);
+    if(!res.locals.partials) 
+        res.locals.partials = {};
+        
+    res.locals.partials.weatherContext = getWeatherData();
+    next();
+});
+
 
 app.use(function(req, res, next){
     res.type('text/plain');
@@ -53,9 +73,42 @@ app.use(function(err, req, res, next){
 });
 
 
+
 app.listen(app.get('port'), function(){
     console.log( 'Express запущен на http://localhost:' +
     app.get('port') + '; нажмите Ctrl+C для завершения.' );
 });
+
+
+
+//////
+
+function getWeatherData(){
+    return {
+        locations: [
+            {
+                name: 'Портленд',
+                forecastUrl: 'http://www.wunderground.com/US/OR/Portland.html',
+                iconUrl: 'http://icons-ak.wxug.com/i/c/k/cloudy.gif',
+                weather: 'Сплошная облачность ',
+                temp: '54.1 F (12.3 C)',
+            },
+            {
+                name: 'Бенд',
+                forecastUrl: 'http://www.wunderground.com/US/OR/Bend.html',
+                iconUrl: 'http://icons-ak.wxug.com/i/c/k/partlycloudy.gif',
+                weather: 'Малооблачно',
+                temp: '55.0 F (12.8 C)',
+            },
+            {
+                name: 'Манзанита',
+                forecastUrl: 'http://www.wunderground.com/US/OR/Manzanita.html',
+                iconUrl: 'http://icons-ak.wxug.com/i/c/k/rain.gif',
+                weather: 'Небольшой дождь',
+                temp: '55.0 F (12.8 C)',
+            },
+        ],
+    };
+}
 
 
