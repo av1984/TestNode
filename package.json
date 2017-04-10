@@ -1,36 +1,37 @@
 {
   "name": "meadowlarktravel",
-  "version": "1.0.0",
-  "description": "traveling",
-  "main": "server.js",
+  "version": "0.0.0",
+  "description": "Sample website for Web Development with Node and Express (O'Reilly).",
+  "main": "meadowlark.js",
   "scripts": {
-    "test": "test",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/av1984/TestNode.git"
+    "url": "https://github.com/EthanRBrown/web-development-with-node-and-express.git"
   },
-  "keywords": [
-    "test",
-    "node"
-  ],
-  "author": "A.V.",
-  "license": "ISC",
+  "author": "Ethan Brown <e@zepln.com>",
+  "license": "GPL, MIT",
   "bugs": {
-    "url": "https://github.com/av1984/TestNode/issues"
+    "url": "https://github.com/EthanRBrown/web-development-with-node-and-express/issues"
   },
-  "homepage": "https://github.com/av1984/TestNode#readme",
+  "homepage": "https://github.com/EthanRBrown/web-development-with-node-and-express",
   "dependencies": {
-    "express": "^4.15.2",
-    "express-handlebars": "^3.0.0"
+    "body-parser": "~1.3.0",
+    "chai": "~1.9.1",
+    "formidable": "~1.0.14",
+    "cookie-parser": "^1.1.0",
+    "express": "~4.4.2",
+    "express-session": "^1.2.1",
+    "express-handlebars": "~0.5.0",
+    "nodemailer": "~0.6.5"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "grunt": "^1.0.1",
-    "grunt-cafe-mocha": "^0.1.13",
-    "grunt-contrib-jshint": "^1.1.0",
-    "grunt-exec": "^2.0.0",
-    "mocha": "^3.2.0"
+    "grunt": "^0.4.5",
+    "grunt-cafe-mocha": "^0.1.12",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-exec": "^0.4.5",
+    "mocha": "~1.20.1",
+    "zombie": "~2.0.0-alpha31"
   }
 }
